@@ -1,54 +1,75 @@
+import java.util.ArrayList;
+
 
 /**
- * Clase que permite almacenar las tareas pendientes que tenemos que hacer.
+ * Clase que permite almacenar las tareas pendientes 
+ * que tenemos por hacer.
  */
-public class Todoist
+public class Todoist 
 {
-    // Nuestras tres tareas.
-    private String tarea0;
-    private String tarea1;
-    private String tarea2;
+    
+    // Almacena nuestras tareas
+    private ArrayList<String> tareas; 
 
+    
     /**
-     * Constructor de la clase Todoist. Crea un gestor con las 3 tareas vacías.
+     * Constructor de la clase Todoist. 
+     * Crea un gestor con las 3 tareas vacías.
      */
     public Todoist()
     {
-        tarea0 = null;
-        tarea1 = null;
-        tarea2 = null;
+        tareas = new ArrayList<String>();
     }
-
+    
     /**
-     * Inserta la tarea especificada en la posicion indicada
+     * Inserta una nueva tarea.
      */
-    public void addTarea(String nombreTarea,int posicion)
+    public void addTarea(String nombreTarea)
     {
-        if (posicion == 0) {
-            tarea0 = nombreTarea;
-        }
-        else if (posicion == 1) {
-            tarea1 = nombreTarea;
-        }
-        else if (posicion == 2) {
-            tarea2 = nombreTarea;
-        }
+        tareas.add(nombreTarea);
     }
-
+    
+     
+    
     /**
-     * Muestra por pantalla todas las tareas existentes
+     * Muestra por pantalla todas las tareas existentes.
      */
-    public void mostrarTareas() 
+    
+    public void mostrarTareas()
     {
         System.out.println("Tareas existentes:");
-        if (tarea0 != null) {
-            System.out.println(tarea0);
-        }
-        if (tarea1 != null){
-            System.out.println(tarea1);
-        }
-        if (tarea2 != null){
-            System.out.println(tarea2);
-        }
+        System.out.println(tareas);
+        
+    }
+    
+    /**
+     * Devuelve el numero de tareas pendientes.
+     */
+    public int getNumeroDeTareasPendientes()
+    {
+       return tareas.size();
+    }
+    
+    /**
+     * Imprime por pantalla el numero de tareas pendientes.
+     */
+    public void mostrarNumeroTareasPendientes() 
+    {
+      System.out.println(tareas.size());  
+    }
+    
+    /**
+     * Elimina la tarea que ocupa la posicion indicada como
+     * parametro (empezando en 0). Devuelve true si elimina una
+     * tarea, false en caso contrario.
+     */
+    public boolean eliminarTarea(int posicionTarea)
+    {
+        boolean valorADevolver = true;
+        if(posicionTarea >=0 && posicionTarea < tareas.size()) {
+            tareas.remove(posicionTarea);
+            valorADevolver = true;
+        }   
+        return valorADevolver;
     }
 }
